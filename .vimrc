@@ -1,28 +1,28 @@
-" Install vim-plug if it not exists.
-
+" Install vim-plug ,f it not exists.
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Plugins will be downloaded under the specified directory.
+" Vim Plug
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Theme
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-
+" Editor Config
 Plug 'editorconfig/editorconfig-vim', { 'as': 'editor-config' }
+"Highlight Search
 Plug 'haya14busa/incsearch.vim', { 'as': 'highlight-search'  }
 
 call plug#end()
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+" Theme
+:colorscheme catppuccin_frappe
+let g:lightline = {'colorscheme': 'catppuccin_frappe'}
 
-let g:lightline = {'colorscheme': 'catppuccin_latte'}
-
+" Config
+let mapleader=","
 set autoindent
 set autowrite
 set backspace=indent,eol,start
@@ -45,3 +45,20 @@ set undodir=~/.vim/undodir
 set undofile
 set wildmenu
 set termguicolors
+
+" Maps
+" Search
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Plug
+map <leader>I :PlugInstall<CR>
+map <leader>C :PlugClean<CR>
+
+" Vim
+map <leader>r :source $MYVIMRC<CR>
+noremap <leader>w :w<CR>
+noremap <leader>wq :wq<CR>
+noremap <leader>q :q!<CR>
+
