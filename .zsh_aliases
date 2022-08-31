@@ -1,0 +1,7 @@
+# DOCKER-COMPOSE
+alias doco="docker-compose"
+alias docou="docker-compose up -d"
+alias docod="docker-compose down"
+
+# Dotfiles
+alias dotfileconf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
