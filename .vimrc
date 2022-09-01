@@ -12,14 +12,19 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " Editor Config
 Plug 'editorconfig/editorconfig-vim', { 'as': 'editor-config' }
-"Highlight Search
+" Highlight Search
 Plug 'haya14busa/incsearch.vim', { 'as': 'highlight-search'  }
+" NerdTree
+Plug 'preservim/nerdtree', { 'as': 'NerdTree' }
 
 call plug#end()
 
 " Theme
 :colorscheme catppuccin_frappe
 let g:lightline = {'colorscheme': 'catppuccin_frappe'}
+
+" Enable filetype
+filetype indent plugin on
 
 " Config
 let mapleader=","
@@ -62,3 +67,14 @@ noremap <leader>w :w<CR>
 noremap <leader>wq :wq<CR>
 noremap <leader>q :q!<CR>
 
+" NERDtree
+map <Leader>nt :NERDTreeToggle<CR>
+map <Leader>nf :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen=0
+let NERDTreeWinSize=35
+let NERDTreeCaseSensitiveSort=1
+let NERDTreeWinPos = "left"
+
+autocmd VimEnter * NERDTree | wincmd p
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
