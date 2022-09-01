@@ -20,9 +20,13 @@ Plug 'preservim/nerdtree', { 'as': 'NerdTree' }
 Plug 'vim-airline/vim-airline', { 'as': 'Airline' }
 call plug#end()
 
+"-------------------------------------
+
 " Theme
 :colorscheme catppuccin_frappe
 let g:lightline = {'colorscheme': 'catppuccin_frappe'}
+
+"-------------------------------------
 
 " Enable filetype
 filetype indent plugin on
@@ -52,6 +56,15 @@ set undofile
 set wildmenu
 set termguicolors
 
+" NerdTree
+let NERDTreeQuitOnOpen=0
+let NERDTreeWinSize=35
+let NERDTreeCaseSensitiveSort=1
+let NERDTreeWinPos = "left"
+let NERDTreeShowHidden=1
+
+"-------------------------------------
+
 " Maps
 " Search
 map /  <Plug>(incsearch-forward)
@@ -71,11 +84,9 @@ noremap <leader>q :q!<CR>
 " NERDtree
 map <Leader>nt :NERDTreeToggle<CR>
 map <Leader>nf :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen=0
-let NERDTreeWinSize=35
-let NERDTreeCaseSensitiveSort=1
-let NERDTreeWinPos = "left"
 
+"-------------------------------------
+
+" Automations
 autocmd VimEnter * NERDTree | wincmd p
-
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
