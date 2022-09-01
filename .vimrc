@@ -16,7 +16,8 @@ Plug 'editorconfig/editorconfig-vim', { 'as': 'editor-config' }
 Plug 'haya14busa/incsearch.vim', { 'as': 'highlight-search'  }
 " NerdTree
 Plug 'preservim/nerdtree', { 'as': 'NerdTree' }
-
+" Airline
+Plug 'vim-airline/vim-airline', { 'as': 'Airline' }
 call plug#end()
 
 " Theme
